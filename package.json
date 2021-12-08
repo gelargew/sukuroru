@@ -8,7 +8,14 @@
   "author": "Gelar Rustiawan",
   "license": "MIT",
   "keywords": ["animation", "scroll", "motion", "react", "typescript"],
-
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gelargew/sukuroru.git"
+  },
+  "homepage": "https://github.com/gelargew/sukuroru",
+  "maintainers": [
+    "Gelar Rustiawan"
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",

@@ -14,16 +14,20 @@ interface contextProps {
     }>
 }
 
-interface ScrollWrapperProps extends React.HTMLProps<HTMLDivElement> {
-    springConfig?: SpringConfig
+interface ScrollWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+    springConfig?: SpringConfig,
+    scrollSpeed?: number,
+    innerProps: React.HTMLAttributes<HTMLDivElement>
 }
 
 const ScrollContext = React.createContext({} as contextProps)
 
 const ScrollWrapper = ({
     springConfig = config.molasses,
+    scrollSpeed = 1,
     children,
     style,
+    innerProps,
     ...props
 }: ScrollWrapperProps) => {
     const ref = useRef<HTMLDivElement>(null)
@@ -39,7 +43,7 @@ const ScrollWrapper = ({
 
     //update Y value according to deltaY in pixel value
     const updateY = (deltaY: number) => {
-        let target = y.animation.to as number + deltaY
+        let target = y.animation.to as number + (deltaY * scrollSpeed)
         if (target > 1) {
             target = 0
         }
@@ -88,6 +92,7 @@ const ScrollWrapper = ({
             style={{
                 transform: y.to(y => `translate3d(0, ${y}px, 0)`)
             }}
+            {...innerProps}
             >
                 <ScrollContext.Provider value={{
                     y,
