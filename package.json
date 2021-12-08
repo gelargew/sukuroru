@@ -7,6 +7,8 @@
   },
   "author": "Gelar Rustiawan",
   "license": "MIT",
+  "keywords": ["animation", "scroll", "motion", "react", "typescript"],
+
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
