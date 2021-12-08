@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Default
-    "target": "ESNext", 
+    "target": "es5", 
     "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true,
     "strict": true, 
@@ -16,6 +16,6 @@
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
   }
 }
