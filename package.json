@@ -1,13 +1,19 @@
 {
   "name": "sukuroru",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React component for creating smooth scroll motion",
   "scripts": {
     "rollup": "rollup -c"
   },
   "author": "Gelar Rustiawan",
   "license": "MIT",
-  "keywords": ["animation", "scroll", "motion", "react", "typescript"],
+  "keywords": [
+    "animation",
+    "scroll",
+    "motion",
+    "react",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gelargew/sukuroru.git"
