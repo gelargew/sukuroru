@@ -106,7 +106,6 @@ const ScrollWrapper = ({
 
 const useScrollContext = () => useContext(ScrollContext)
 
-
 export {
     ScrollWrapper,
     useScrollContext,
