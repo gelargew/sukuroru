@@ -1,0 +1,26 @@
+{
+  "name": "sukuroru",
+  "version": "0.0.1",
+  "description": "React component for creating smooth scroll motion",
+  "scripts": {
+    "rollup": "rollup -c"
+  },
+  "author": "Gelar Rustiawan",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/react": "^17.0.37",
+    "react": "^17.0.2",
+    "rollup": "^2.60.2",
+    "rollup-plugin-dts": "^4.0.1",
+    "typescript": "^4.5.2"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts"
+}

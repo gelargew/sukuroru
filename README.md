@@ -1,0 +1,1 @@
+## React Component for creating smooth scroll motion
