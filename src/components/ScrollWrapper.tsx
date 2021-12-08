@@ -55,7 +55,7 @@ const ScrollWrapper = ({
 
     const bind = useGesture({
         onWheel: state => state.active && updateY(-state.movement[1]/2),
-        onDrag: state => updateY(state.delta[1] * 2)
+        onDrag: state => updateY(state.delta[1] * 2.5 * state.velocity[1])
     })
 
     //update Y to any pixel value or to any direct children given its index
