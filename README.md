@@ -13,7 +13,7 @@ a smooth scrolling div for your react application.
 
 
 ```bash
-$ npm install sukuroru
+$ npm install react-spring @use-gesture/react sukuroru
 ```
 
 Hello World:
@@ -41,15 +41,16 @@ import { useScrollContext } from 'sukuroru'
 
 
 const MyButtons = () => {
-    const {y, scrollTo, height, spring} = useScrollContext()
+    const {
+        offset,   // {x, y} position of current offset as SpringValue.
+        scrollTo, // use this to manually change the scroll position.
+        spring    // the wrapper spring api.
+        } = useScrollContext()
 
-    // y is a SpringValue<number> of the spring used to control the y position, use this to animate any div 
-    // inside the ScrollWrapper based on current scroll position.
-    // scrollTo, a helper function. use this to manually change the scroll position
     return (
         <>
-            <button onClick={() => scrollTo(0)}> scroll to the first element inside scrollWrapper </button> 
-            <button onClick={() => scrollTo('500px')}> scroll to 500px along the Y axis</button>
+            <button onClick={() => scrollTo(3)}> scroll to the fourth element inside scrollWrapper </button> 
+            <button onClick={() => scrollTo('500px')}> scroll to 500px</button>
         </>
     )
 }
