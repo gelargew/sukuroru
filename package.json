@@ -1,6 +1,6 @@
 {
   "name": "sukuroru",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React component for creating smooth scroll motion",
   "scripts": {
     "rollup": "rollup -c"
