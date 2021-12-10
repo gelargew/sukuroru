@@ -30,11 +30,19 @@ const MyComponent = () => {
     )
 }
 ```
-try it yourself [here!.](https://codesandbox.io/s/sukuroru-example1-9cg9b?file=/src/App.tsx)
+try it yourself [here!.](https://codesandbox.io/s/sukuroru-example1-9cg9b?file=/src/App.tsx).
 
-keep in mind that in order for a component to become scrollable, the height of the content inside the wrapper must be bigger.
+keep in mind that in order for a component to become scrollable, the content inside the wrapper must be bigger(overflowing).
 
 <hr>
+
+### FEATURES
+- [x] Vertical & horizontal scrolling.
+- [x] Typescript support.
+
+<hr>
+
+### API
 
 ScrollWrapper accept any props that a normal div element can accept plus some additional including:
 
