@@ -14,14 +14,16 @@ interface contextProps {
     spring: SpringRef<{
         y: number,
         x: number
-    }>
+    }>,
+    active: boolean
 }
 
-interface ScrollWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ScrollWrapperProps extends React.HTMLProps<HTMLDivElement> {
     springConfig?: SpringConfig,
     scrollSpeed?: number,
     innerProps?: React.HTMLAttributes<HTMLDivElement>,
-    horizontal?: boolean
+    horizontal?: boolean,
+    active?: boolean
 }
 
 const ScrollContext = React.createContext({} as contextProps)
@@ -35,6 +37,7 @@ const ScrollWrapper = ({
     style,
     innerProps,
     horizontal = false,
+    active = true,
     ...props
 }: ScrollWrapperProps) => {
     const ref = useRef<HTMLDivElement>(null)
@@ -49,11 +52,22 @@ const ScrollWrapper = ({
         {
             display: 'flex',
             flexDirection: 'row',
-            height: '100%',
-            width: 'fit-content'
+            height: 'inherit',
+            width: 'fit-content',
+            ...innerProps?.style
         }:
-        {}
+        {
+            width: 'inherit',
+            height: 'fit-content',
+            ...innerProps?.style
+        }
     }, [horizontal])
+    const isActive = useMemo(() => {
+        if (!active) return false
+        if (horizontal) return content.width > wrapper.width
+        else return content.height > wrapper.height
+    }, [active, horizontal, height, width])
+
 
     const [{y,x}, spring] = useSpring(() => ({
         y: 0,
@@ -64,20 +78,22 @@ const ScrollWrapper = ({
     //update Y value according to deltaY in pixel value
     const updateY = (deltaY: number) => {
         let target = y.animation.to as number + (deltaY * scrollSpeed)
-        if (target > 1) target = 0
+        if (!isActive) target = 0
+        else if (target > 0) target = 0        
         else if (target < -height) target = -height  
         spring.start({y: target})
     }
-    const updateX = (deltaX: number) => {
 
+    const updateX = (deltaX: number) => {      
         let target = x.animation.to as number + (deltaX * scrollSpeed)
-        if (target > 1) target = 0
+        if (!isActive) target = 0
+        else if (target > 0) target = 0
         else if (target < -width) target = -width
         spring.start({x: target})
     }
 
     const bind = useGesture({
-        onWheel: state => {
+        onWheel: state => {            
             if (horizontal) {
                 state.active && updateX(-state.movement[1]/2)
             }
@@ -95,7 +111,7 @@ const ScrollWrapper = ({
         }
     })
 
-    //update Y to any pixel value or to any direct children given its index
+    //update offset to any pixel value or to any direct children given its index
     const scrollTo = (page: number | string) => {
         if (ref.current) {
             if (typeof page === 'string') {
@@ -140,7 +156,8 @@ const ScrollWrapper = ({
                     scrollTo,
                     wrapper,
                     content,
-                    spring
+                    spring,
+                    active
                 }}>
                     {children}
                 </ScrollContext.Provider>
