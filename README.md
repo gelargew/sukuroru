@@ -7,8 +7,8 @@
 
 
 
-a simple wrapper around [react-spring](https://github.com/pmndrs/react-spring) to create
-a smooth scrolling div for your react application. 
+a simple wrapper to create a smooth scrolling div for your react application. it uses [gesture](https://github.com/pmndrs/use-gesture) handlers 
+and [react-spring](https://github.com/pmndrs/react-spring) physics to animate the element
 
 
 
@@ -33,6 +33,30 @@ const MyComponent = () => {
 keep in mind that in order for a component to become scrollable, the height of the content inside the wrapper must be bigger.
 
 <hr>
+
+ScrollWrapper accept any props that a normal div element can accept plus some additional including:
+
+```jsx
+<ScrollWrapper
+scrollSpeed={1}     // any number.
+horizontal={false}  // toggle horizontal scrolling
+active={true}       // deactivate this if you dont want the element to scroll
+springConfig={{     // a spring config value.
+    tension: 280;
+    friction: 120;
+}}
+innerProps
+></ScrollWrapper>
+```
+
+ScrollWrapper have an inner an outer div. if you want to change any of the inner div props, use innerProps.
+```jsx
+innerProps={{
+    className: 'inner',
+    onClick={handleClick}
+    style={MyStyle}
+}}
+```
 
 `useScrollContext` is a hook that contains the scrollWrapper states and properties. this is only accesible inside the ScrollWrapper component.
 
@@ -64,7 +88,9 @@ const App = () => {
 }
 ```
 
+want more control for the animation? check out [react-spring](https://github.com/pmndrs/react-spring) docs!
 
 
 
-if you have questions or having a problem feel free to open [issues](https://github.com/gelargew/sukuroru/issues)
+
+if you have questions or having a problem feel free to open [issues](https://github.com/gelargew/sukuroru/issues). also [PR](https://github.com/gelargew/sukuroru/pulls) is open
