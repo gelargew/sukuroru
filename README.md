@@ -53,8 +53,8 @@ ScrollWrapper have an inner an outer div. if you want to change any of the inner
 ```jsx
 innerProps={{
     className: 'inner',
-    onClick={handleClick}
-    style={MyStyle}
+    onClick:{handleClick}
+    style:{MyStyle}
 }}
 ```
 
