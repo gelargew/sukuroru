@@ -135,7 +135,7 @@ const ScrollWrapper = ({
         <div
         ref={wrapperRef}
         style={{
-            touchAction: 'none',
+            touchAction: 'pinch-zoom',
             overflow: 'hidden',
             maxHeight: '100vh',
             ...style
