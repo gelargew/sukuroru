@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ResizeObserver from 'resize-observer-polyfill'
 
 interface DOMRectProps {
     x: number,
